@@ -4,17 +4,12 @@ pipeline {
 
     stages {
         
-        stage('Pukking Repo Files') {
-            steps {
-              git branch: "${GIT_BRANCH}", credentialsId: 'github', url: 'https://github.com/ahmedKhaled1995/simple_nodejs_app.git'
-            }
-        }
         
         stage('Stage 1') {
             steps {
                 sh ''' 
-                    ls
-                    date
+                    docker build -t testapp:v1 .
+                    docker run testapp:v1
                 '''
             }
         }
