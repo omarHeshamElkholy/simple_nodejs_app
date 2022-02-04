@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh ''' 
                     docker build -t testapp:v1 .
-                    docker run testapp:v1
+                    docker run --rm -it -p 3000:3000 testapp:v1
                 '''
             }
         }
